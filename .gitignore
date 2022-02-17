@@ -1,6 +1,6 @@
 
-# Created by https://www.toptal.com/developers/gitignore/api/phpunit,angular,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=phpunit,angular,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/angular,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=angular,visualstudiocode
 
 ### Angular ###
 ## Angular ##
@@ -34,21 +34,6 @@ e2e/*.map
 # System Files
 .DS_Store/
 
-### PHPUnit ###
-# Covers PHPUnit
-# Reference: https://phpunit.de/
-
-# Generated files
-.phpunit.result.cache
-.phpunit.cache
-
-# PHPUnit
-/app/phpunit.xml
-/phpunit.xml
-
-# Build data
-/build/
-
 ### VisualStudioCode ###
 .vscode/*
 !.vscode/settings.json
@@ -70,6 +55,4 @@ e2e/*.map
 
 # Support for Project snippet scope
 
-# End of https://www.toptal.com/developers/gitignore/api/phpunit,angular,visualstudiocode
-
-config.php
+# End of https://www.toptal.com/developers/gitignore/api/angular,visualstudiocode
