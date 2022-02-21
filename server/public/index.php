@@ -1,17 +1,22 @@
 <?php
+
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Psr\Log\LoggerInterface;
+
+use Arges\ServiceVeranstaltungen;
 
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 
 $app->get('/server/', function (Request $request, Response $response, $args) {
+    $veranstaltungenService = new ServiceVeranstaltungen();
     $response->getBody()->write("Hello world!");
     return $response;
 });
+
 
 
 
@@ -40,6 +45,6 @@ $customErrorHandler = function (
 
 
 $errorMiddleware = $app->addErrorMiddleware(true, true, true);
-$errorMiddleware->setDefaultErrorHandler($customErrorHandler);
+//$errorMiddleware->setDefaultErrorHandler($customErrorHandler);
 
 $app->run();
