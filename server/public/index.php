@@ -5,17 +5,20 @@ use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Psr\Log\LoggerInterface;
 
-use Arges\ServiceVeranstaltungen;
+use Arges\ServiceWorker;
 
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = AppFactory::create();
 
+$serviceWorker = new ServiceWorker();
+
 $app->get('/server/', function (Request $request, Response $response, $args) {
-    $veranstaltungenService = new ServiceVeranstaltungen();
     $response->getBody()->write("Hello world!");
     return $response;
 });
+
+$app->get('/server/veranstaltungen', array($serviceWorker, 'getVeranstaltungen'));
 
 
 
