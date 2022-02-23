@@ -9,14 +9,17 @@ require __DIR__ . '/../vendor/autoload.php';
 
 class ServiceWorker
 {
-    function __construct()
+    private Factory $factory;
+
+    function __construct(Factory $factory)
     {
-        echo "Konstruktor aufgerufen";
+        $this->factory = $factory;
     }
 
     public function getVeranstaltungen(Request $request, Response $response, $args): Response
     {
-        $response->getBody()->write("Hier sind die Veranstaltungen");
+        $veranstaltungen = $this->factory->getBLVeranstaltung()->getVeranstaltungen();
+        $response->getBody()->write(json_encode($veranstaltungen));
         return $response;
     }
 }

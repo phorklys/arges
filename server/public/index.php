@@ -1,17 +1,22 @@
 <?php
 
+namespace Arges;
+
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 use Psr\Log\LoggerInterface;
-
-use Arges\ServiceWorker;
+use \Throwable;
 
 require __DIR__ . '/../vendor/autoload.php';
+require '../config.php';
+
+global $config;
 
 $app = AppFactory::create();
 
-$serviceWorker = new ServiceWorker();
+$factory = new GeneralFactory($config);
+$serviceWorker =  $factory->getServiceWorker();
 
 $app->get('/server/', function (Request $request, Response $response, $args) {
     $response->getBody()->write("Hello world!");
@@ -19,9 +24,6 @@ $app->get('/server/', function (Request $request, Response $response, $args) {
 });
 
 $app->get('/server/veranstaltungen', array($serviceWorker, 'getVeranstaltungen'));
-
-
-
 
 $customErrorHandler = function (
     Request $request,
